@@ -147,9 +147,21 @@ claude --permission-mode acceptEdits --print "任务描述" &
 
 **初始化时间**: 2026-03-17
 **当前状态**: 项目骨架已搭建，代码目录为空
-**Git 仓库**: 本地仓库 `/data/ecommerce-shop/.git`（待配置远程仓库）
+**Git 仓库**:
+- 本地仓库: `/data/ecommerce-shop/.git`
+- 远程仓库: https://github.com/leeshome2009-ops/ecommdemo.git
+- 远程分支: main
 **测试分工**: 开发机器人负责单元测试，测试机器人负责集成联调
 **下一步**: 等待具体功能需求开始开发
+
+## Git 推送说明
+
+由于当前环境未配置 GitHub 认证，开发机器人会在本地完成代码提交。
+
+**推送方式**:
+1. 方式一：配置 GitHub Token 或 SSH 密钥后自动推送
+2. 方式二：由项目负责人手动执行 `git push`
+3. 方式三：通过 CI/CD 流水线自动推送
 
 ## 重要决策记录
 
