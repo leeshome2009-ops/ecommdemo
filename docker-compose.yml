@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  # MySQL 8.0
+  mysql:
+    image: mysql:8.0
+    container_name: ecommerce-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: ecommerce
+      MYSQL_USER: ecommerce
+      MYSQL_PASSWORD: ecommerce123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    networks:
+      - ecommerce-network
+
+  # Redis 7
+  redis:
+    image: redis:7-alpine
+    container_name: ecommerce-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes --requirepass redis123
+    networks:
+      - ecommerce-network
+
+  # Adminer (MySQL Web 管理工具，可选)
+  adminer:
+    image: adminer:latest
+    container_name: ecommerce-adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    networks:
+      - ecommerce-network
+
+  # Redis Commander (Redis Web 管理工具，可选)
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: ecommerce-redis-commander
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      - REDIS_HOSTS=local:redis:6379:0:redis123
+    depends_on:
+      - redis
+    networks:
+      - ecommerce-network
+
+volumes:
+  mysql-data:
+  redis-data:
+
+networks:
+  ecommerce-network:
+    driver: bridge
