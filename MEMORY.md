@@ -171,6 +171,14 @@ claude --permission-mode acceptEdits --print "任务描述" &
 - **前端**: Vue 3 + TypeScript + Vite + Element Plus + Pinia
 - **后端**: Java 17+ + Spring Boot 3.x + MyBatis-Plus + Redis + MySQL
 
+### 2026-03-17 - Claude Code 模型配置和备用方案
+- **主模型**: Claude Opus 4.6（当前使用）
+- **备用模型**: GLM-4.7（智谱 AI，当前对话使用的模型）
+- **切换策略**: 当 Claude Opus 4.6 遇到配额限制或 429 错误时，自动切换到 GLM-4.7
+- **切换方式**:
+  - Claude Code: `claude --print "任务"` → GLM-4.7: 直接由 GLM-4.7 处理任务
+  - GLM-4.7 特点: 中文优化，适合中文需求理解和代码生成
+
 ### 2026-03-17 - 确定使用 Claude Code 作为代码实现工具
 - **决策**: 使用 Claude Code (claude CLI) 进行代码编写
 - **原因**: 用户已经通过 Claude Code 完成项目初始化，希望延续使用
