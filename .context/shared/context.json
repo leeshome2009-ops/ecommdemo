@@ -1,0 +1,118 @@
+{
+  "project": {
+    "name": "ecommerce-shop",
+    "description": "电商购物系统",
+    "repository": "https://github.com/leeshome2009-ops/ecommdemo",
+    "techStack": {
+      "frontend": {
+        "framework": "Vue 3",
+        "language": "TypeScript",
+        "build": "Vite",
+        "ui": "Element Plus",
+        "state": "Pinia",
+        "router": "Vue Router 4"
+      },
+      "backend": {
+        "framework": "Spring Boot 3.x",
+        "language": "Java 17+",
+        "orm": "MyBatis-Plus",
+        "database": "MySQL 8.0",
+        "cache": "Redis 7"
+      }
+    },
+    "status": "development",
+    "phase": "initialization",
+    "createdAt": "2026-03-17T14:00:00Z"
+  },
+  "agents": {
+    "devbot": {
+      "name": "开发机器人",
+      "role": "development",
+      "status": "active",
+      "model": "GLM-4.7 / Claude Opus 4.6",
+      "responsibilities": [
+        "前端开发 (Vue 3)",
+        "后端开发 (Spring Boot)",
+        "单元测试编写",
+        "代码提交和版本管理"
+      ],
+      "currentTask": null,
+      "lastActivity": "2026-03-17T16:35:00Z"
+    },
+    "testbot": {
+      "name": "测试机器人",
+      "role": "testing",
+      "status": "pending",
+      "responsibilities": [
+        "集成测试",
+        "联调测试",
+        "端到端测试",
+        "测试报告生成"
+      ],
+      "currentTask": null,
+      "lastActivity": null
+    }
+  },
+  "decisions": [
+    {
+      "id": "2026-03-17-001",
+      "topic": "技术栈选型",
+      "decision": "前端使用 Vue 3 + TypeScript，后端使用 Java Spring Boot 3.x",
+      "reason": "根据项目需求调整，使用成熟稳定的技术栈",
+      "by": "devbot",
+      "timestamp": "2026-03-17T15:00:00Z",
+      "status": "implemented"
+    },
+    {
+      "id": "2026-03-17-002",
+      "topic": "中间件部署方式",
+      "decision": "使用 Docker 容器部署 MySQL 和 Redis",
+      "reason": "开发阶段快速迭代，容器化易于管理",
+      "by": "devbot",
+      "timestamp": "2026-03-17T16:20:00Z",
+      "status": "implemented"
+    },
+    {
+      "id": "2026-03-17-003",
+      "topic": "测试分工",
+      "decision": "开发机器人负责单元测试，测试机器人负责集成联调测试",
+      "reason": "明确职责边界，提高测试效率",
+      "by": "devbot",
+      "timestamp": "2026-03-17T15:30:00Z",
+      "status": "implemented"
+    },
+    {
+      "id": "2026-03-17-004",
+      "topic": "多机器人协作",
+      "decision": "使用文件系统 + Git 实现轻量级上下文共享",
+      "reason": "无需额外依赖，易于实现，Git 自动跟踪变更",
+      "by": "devbot",
+      "timestamp": "2026-03-17T16:35:00Z",
+      "status": "implemented"
+    }
+  ],
+  "tasks": [],
+  "infrastructure": {
+    "docker": {
+      "status": "running",
+      "containers": {
+        "mysql": {
+          "image": "mysql:8.0",
+          "port": 3306,
+          "database": "ecommerce",
+          "status": "running"
+        },
+        "redis": {
+          "image": "redis:7-alpine",
+          "port": 6379,
+          "status": "running"
+        }
+      }
+    },
+    "git": {
+      "remote": "https://github.com/leeshome2009-ops/ecommdemo.git",
+      "branch": "main",
+      "lastCommit": "ac8ed9b"
+    }
+  }
+}

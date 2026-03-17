@@ -1,0 +1,51 @@
+{
+  "agent": "devbot",
+  "status": "active",
+  "currentTask": null,
+  "completedTasks": [
+    {
+      "id": "init-001",
+      "title": "项目初始化",
+      "description": "创建项目目录结构、配置 Git 仓库",
+      "completedAt": "2026-03-17T14:00:00Z",
+      "commit": "5cd8784"
+    },
+    {
+      "id": "init-002",
+      "title": "配置开发机器人身份",
+      "description": "创建 IDENTITY.md、SOUL.md、USER.md",
+      "completedAt": "2026-03-17T16:30:00Z",
+      "commit": "9c778e5"
+    },
+    {
+      "id": "init-003",
+      "title": "部署基础设施",
+      "description": "使用 Docker 部署 MySQL 和 Redis",
+      "completedAt": "2026-03-17T16:20:00Z",
+      "commit": "d832335"
+    },
+    {
+      "id": "init-004",
+      "title": "建立多机器人协作机制",
+      "description": "创建共享上下文结构",
+      "completedAt": "2026-03-17T16:35:00Z",
+      "commit": "pending"
+    }
+  ],
+  "skills": [
+    "Vue 3 开发",
+    "Spring Boot 开发",
+    "MyBatis-Plus",
+    "MySQL",
+    "Redis",
+    "Git",
+    "Docker",
+    "单元测试"
+  ],
+  "preferences": {
+    "codeStyle": "阿里巴巴 Java 开发手册",
+    "frontendStyle": "Vue 3 Composition API + Setup 语法糖",
+    "commitStyle": "conventional commits",
+    "testing": "只做单元测试，集成测试由 TestBot 负责"
+  }
+}
