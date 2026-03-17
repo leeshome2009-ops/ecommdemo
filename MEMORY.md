@@ -113,11 +113,11 @@
 
 ### 调用命令
 ```bash
-# 前台执行（快速任务）
-claude --print "具体任务描述"
+# 前台执行（快速任务）- 自动接受编辑，无需确认
+claude --permission-mode acceptEdits --print "具体任务描述"
 
 # 后台执行（长时间任务）
-claude --print "任务描述" &
+claude --permission-mode acceptEdits --print "任务描述" &
 ```
 
 ### 工作目录
