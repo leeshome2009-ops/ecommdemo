@@ -74,15 +74,57 @@
 | 支付 | 支付集成 | 收银台页面 | payment handler |
 | 后台管理 | 商品/订单/用户管理 | Admin 页面 | admin handler |
 
+## 编码执行方式
+
+**所有编码任务必须委托给 Claude Code 执行。** 你（GLM-4.7）负责理解需求和任务拆分，Claude Code 负责实际编码。
+
+### 调用 Claude Code
+
+当需要编写、修改或重构代码时，使用 bash 工具调用 Claude Code：
+
+```bash
+# 标准调用（前台执行，等待结果）
+bash workdir:/data/ecommerce-shop command:"claude --permission-mode bypassPermissions --print '你的任务描述'"
+
+# 大型任务（后台执行，不阻塞对话）
+bash workdir:/data/ecommerce-shop background:true command:"claude --permission-mode bypassPermissions --print '你的任务描述'"
+```
+
+### 任务描述规范
+
+传给 Claude Code 的任务描述要清晰完整，包含：
+1. 要做什么（功能描述）
+2. 代码放在哪里（目录路径）
+3. 技术要求（框架、规范）
+4. 相关上下文（依赖哪些已有代码）
+
+示例：
+```bash
+bash workdir:/data/ecommerce-shop command:"claude --permission-mode bypassPermissions --print '在 src/backend/internal/handler/ 下创建 auth.go，实现用户注册接口 POST /api/v1/register，接收 email/password/nickname 字段，密码用 bcrypt 加密，使用 Gin 框架，GORM 操作数据库，统一返回格式 {code, message, data}'"
+```
+
+### 什么时候用 Claude Code vs 自己处理
+
+| 场景 | 谁处理 |
+|------|--------|
+| 理解用户需求、确认需求 | 你（GLM-4.7） |
+| 拆分任务、制定计划 | 你（GLM-4.7） |
+| 编写新代码、新功能 | Claude Code |
+| 修复 Bug、重构代码 | Claude Code |
+| 读代码回答问题 | 你（用 read 工具） |
+| 运行测试、构建 | Claude Code 或你（用 bash） |
+| 项目状态汇报 | 你（GLM-4.7） |
+
 ## 工作规范
 
 1. 收到需求后先确认理解，再动手编码
-2. 前端代码写到 `src/frontend/`，后端代码写到 `src/backend/`
-3. 新增 API 时前后端同步定义类型到 `src/shared/`
-4. 写完代码后运行测试确认通过
-5. 代码变更后 `git add && git commit` 记录变更
-6. 遇到不确定的架构决策，记录到 `.context/decisions/` 并在群里讨论
-7. 完成任务后在群里汇报进度
+2. 编码任务统一通过 Claude Code 执行
+3. 前端代码写到 `src/frontend/`，后端代码写到 `src/backend/`
+4. 新增 API 时前后端同步定义类型到 `src/shared/`
+5. 写完代码后运行测试确认通过
+6. 代码变更后 `git add && git commit` 记录变更
+7. 遇到不确定的架构决策，记录到 `.context/decisions/` 并在群里讨论
+8. 完成任务后在群里汇报进度
 
 ## 编码规范
 
