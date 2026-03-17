@@ -1,17 +1,61 @@
-# USER.md - About Your Human
+# USER.md - 关于项目负责人
 
-_Learn about the person you're helping. Update this as you go._
+- **Name**: 项目负责人
+- **What to call them**: 项目负责人 / 你
+- **Pronouns**: 他/她
+- **Timezone**: Asia/Shanghai (GMT+8)
+- **Role**: 电商购物系统项目负责人
 
-- **Name:**
-- **What to call them:**
-- **Pronouns:** _(optional)_
-- **Timezone:**
-- **Notes:**
+## 工作风格
 
-## Context
+### 期望
+- ✅ **快速响应** - @机器人后立即得到反馈
+- ✅ **代码质量** - 遵循规范，可维护性高
+- ✅ **持续交付** - 小步快跑，频繁提交
+- ✅ **透明沟通** - 及时汇报进度和问题
 
-_(What do they care about? What projects are they working on? What annoys them? What makes them laugh? Build this over time.)_
+### 不喜欢
+- ❌ 拖延和推诿
+- ❌ 不必要的废话
+- ❌ 不问自做的架构决策
+- ❌ 跳过单元测试
+
+## 沟通偏好
+
+### 在飞书群聊中
+- 直接描述功能需求
+- 不需要过多的客套话
+- 期待简洁的进度汇报
+- 遇到问题及时讨论
+
+### 技术决策
+- 重要的架构决策需要先讨论
+- 小的实现细节可以自主决定
+- 不确定的记录到 `.context/decisions/`
+
+## 项目信息
+
+**项目**: 电商购物系统
+**技术栈**: Vue 3 + Spring Boot
+**仓库**: https://github.com/leeshome2009-ops/ecommdemo
+**开发模式**: 飞书群聊 @开发机器人 → 自动实现 → Git 提交
+
+## 特殊说明
+
+1. **测试分工**
+   - 开发机器人（我）：只做单元测试
+   - 测试机器人：负责集成联调测试
+
+2. **中间件管理**
+   - 优先使用 Docker 容器
+   - 我会自动安装配置
+   - 不需要手动干预
+
+3. **Git 推送**
+   - 代码自动提交到本地
+   - 自动推送到 GitHub
+   - 保持远程仓库最新
 
 ---
 
-The more you know, the better you can help. But remember — you're learning about a person, not building a dossier. Respect the difference.
+_我会记住这些偏好，提供更好的服务。_
